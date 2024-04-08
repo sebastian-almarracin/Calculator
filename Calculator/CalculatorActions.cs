@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calculator
+﻿namespace Calculator
 {
     public static class CalculatorActions
     {
@@ -37,43 +30,22 @@ namespace Calculator
             return result;
         }
 
-
-        //public string SquareRoot(string num)
-        //{
-        //    var result = (decimal)Math.Sqrt(Convert.ToDouble(num));
-
-        //    return result.ToString();
-        //}
-
-        //public string Sine(string angleInDegrees)
-        //{
-        //    double angle = (double)Convert.ToDecimal(angleInDegrees);
-        //    var result = (decimal)Math.Sin(Math.PI * angle / 180.0);
-        //    return result.ToString();
-        //}
-
-        //public string Cosine(string angleInDegrees)
-        //{
-        //    double angle = (double)Convert.ToDecimal(angleInDegrees);
-        //    var result = (decimal)Math.Cos(Math.PI * angle / 180.0);
-        //    return result.ToString();
-        //}
-
-        //public string Tangent(string angleInDegrees)
-        //{
-        //    double angle = (double)Convert.ToDecimal(angleInDegrees);
-        //    var result = (decimal)Math.Tan(Math.PI * angle / 180.0);
-        //    return result.ToString();
-        //}
-
-        //public string Logarithm(string number, string newBase)
-        //{
-        //    double num = (double)Convert.ToDecimal(number);
-        //    double baseVal = (double)Convert.ToDecimal(newBase);
-        //    var result = (decimal)Math.Log(num, baseVal);
-
-        //    return result.ToString();
-        //}
+        public static decimal SquareRoot(decimal num)
+        {
+            try
+            {
+                double result = double.Parse(num.ToString());
+                if (result < 0)
+                {
+                    throw new ArgumentException("Cannot calculate square root of a negative number.");
+                }
+                return (decimal)Math.Sqrt(result);
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException("Invalid input. Please provide valid numeric strings.");
+            }
+        }
 
     }
 
