@@ -1,9 +1,4 @@
 ﻿using Calculator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cacluclator
 {
@@ -17,8 +12,16 @@ namespace Cacluclator
         {
             var input1 = DeserializeNumber(value1);
 
-            var input2 = PreviousResult.HasValue ? PreviousResult.Value : DeserializeNumber(value2);
-            var result = PerformAction(input1, input2, action);
+            var input2 = PreviousResult ?? DeserializeNumber(value2);
+            decimal result;
+            if (HasPreviousResult)
+            {
+                result = PerformAction(input2, input1, action);
+            }
+            else
+            {
+                result = PerformAction(input1, input2, action);
+            }
             PreviousResult = result;
             return result.ToString();
         }
@@ -31,6 +34,7 @@ namespace Cacluclator
                 "-" => CalculatorActions.Subtract(input1, input2),
                 "*" => CalculatorActions.Multiply(input1, input2),
                 "/" => CalculatorActions.Divide(input1, input2),
+                "v" => CalculatorActions.SquareRoot(input1),
                 _ => throw new ArgumentException("Invalid input. Please provide valid calculator function."),
             };
         }

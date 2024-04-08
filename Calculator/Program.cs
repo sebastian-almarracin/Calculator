@@ -1,5 +1,4 @@
 ﻿using Cacluclator;
-using System.Text.RegularExpressions;
 
 namespace Calculator
 {
@@ -25,6 +24,7 @@ namespace Calculator
                     Console.WriteLine("\t- : Subtract");
                     Console.WriteLine("\t* : Multiply");
                     Console.WriteLine("\t/ : Divide");
+                    Console.WriteLine("\tv : SquareRoot");
                     Console.Write("Enter an option: ");
                     var action = Console.ReadLine();
 
